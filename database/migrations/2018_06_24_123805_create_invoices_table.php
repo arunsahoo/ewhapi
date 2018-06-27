@@ -15,7 +15,7 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('OrderID');
+            $table->integer('OrderID')->foreign('OrderID')->references('id')->on('orders');
             $table->string('InvoiceName');
             $table->date('InoviceDate');
             $table->float('TotalAmount', 8, 2);

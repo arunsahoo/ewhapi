@@ -15,8 +15,7 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('UserID');
-            $table->foreign('UserID')->references('id')->on('users');
+            $table->integer('UserID')->foreign('UserID')->references('id')->on('users');
             $table->string('CustomerName');
             $table->string('CompanyName');
             $table->string('GSTIN');

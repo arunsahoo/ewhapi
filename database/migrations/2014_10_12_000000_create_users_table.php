@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('UserGroupID');
+            $table->integer('UserGroupID')->foreign('UserGroupID')->references('id')->on('usergroup');
             $table->string('EmailID')->unique();
             $table->integer('PhoneNo');
             $table->string('UName');
