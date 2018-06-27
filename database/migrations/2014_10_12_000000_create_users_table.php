@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->integer('Country');
             $table->integer('ZipCode');
             $table->integer('Status');
+            $table->time('LastLogin');
             $table->rememberToken();
             $table->timestamps();
         });
