@@ -15,10 +15,9 @@ class CreateUsergroupPermissionTable extends Migration
     {
         Schema::create('usergroup_permission', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('PermissionID');
-            $table->foreign('PermissionID')->references('id')->on('userpermission');
-            $table->unsignedInteger('UserGroupID');
-            $table->foreign('UserGroupID')->references('id')->on('usergroup_permission');
+            $table->integer('PermissionID');
+            $table->integer('UserGroupID');
+            $table->timestamps();
         });
     }
 
