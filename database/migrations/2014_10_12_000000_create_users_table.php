@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('UserGroupID')->foreign('UserGroupID')->references('id')->on('usergroup');
+            $table->integer('UserGroupID')->foreign('UserGroupID')->references('id')->on('usergroup')->default(0);
             $table->string('EmailID')->unique();
             $table->integer('PhoneNo');
             $table->string('UName');
@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->string('State');
             $table->integer('Country');
             $table->integer('ZipCode');
-            $table->integer('Status');
-            $table->time('LastLogin');
+            $table->integer('Status')->default(0);
+            $table->time('LastLogin')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
