@@ -33,14 +33,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // Create/ Update User data
-        $user = $request->isMethod('put') ? User::findOrFail($request->user_id) : new User;
+        $user = $request->isMethod('put') ? User::findOrFail($request->id) : new User;
 
-        $user->id = $request->input('user_id');
+        $user->id = $request->input('id');
         $user->UserGroupID = $request->input('UserGroupID');
         $user->EmailID = $request->input('EmailID');
         $user->PhoneNo = $request->input('PhoneNo');
         $user->UName = $request->input('UName');
-        $user->Password = $request->input('Password');
+        $user->Password = md5($request->input('Password'));
         $user->FName = $request->input('FName');
         $user->LName = $request->input('LName');
         $user->Address = $request->input('Address');
