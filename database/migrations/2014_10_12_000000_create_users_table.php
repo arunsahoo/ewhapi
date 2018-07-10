@@ -15,20 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('UserGroupID')->foreign('UserGroupID')->references('id')->on('usergroup')->default(0);
-            $table->string('EmailID')->unique();
-            $table->integer('PhoneNo');
-            $table->string('UName');
-            $table->string('Password');
-            $table->string('FName');
-            $table->string('LName');
-            $table->string('Address');
-            $table->string('City');
-            $table->string('State');
-            $table->integer('Country');
-            $table->integer('ZipCode');
-            $table->integer('Status')->default(0);
-            $table->time('LastLogin')->nullable();
+            $table->integer('user_group_ID')->foreign('user_group_ID')->references('id')->on('usergroup')->default(0);
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('uname');
+            $table->string('password');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
+            $table->integer('country');
+            $table->integer('zipcode');
+            $table->integer('status')->default(0);
+            $table->time('lastlogin')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
