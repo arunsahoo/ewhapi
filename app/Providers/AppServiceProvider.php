@@ -27,6 +27,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         // Resource::withoutWrapping();
+
+    Passport::routes();
+
+    Passport::tokensExpireIn(now()->addDays(15));
+
+    Passport::refreshTokensExpireIn(now()->addDays(30));
         
     }
 
@@ -37,6 +43,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Passport::routes();
+        
     }
 }
