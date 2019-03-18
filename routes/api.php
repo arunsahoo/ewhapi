@@ -14,10 +14,29 @@ use Illuminate\Http\Request;
 */
 // Auth::routes();
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//404 Page Not Found.
+Route::fallback(function(){
+    return response()->json(['error' => "NotFoundError: This route don't exist!"], 404);
+})->name('api.fallback.404');
+
+//Authorization api
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', 'AuthController@login')->name('api.login');
+    Route::post('signup', 'AuthController@signup')->name('api.signup');
+  
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', 'AuthController@logout')->name('api.logout');
+        // Route::get('user', 'AuthController@user');
+    });
 });
 
+Route::group([
+    'middleware' => 'auth.apikey' //authenticate api request with apikey.
+], function () {
 //List Users
 Route::get('users', 'UserController@index');
 
@@ -34,7 +53,8 @@ Route::put('user', 'UserController@store');
 Route::delete('user/{id}', 'UserController@destroy');
 
 //List Countries
-Route::get('countries', 'CountryController@index');
+Route::get('countries', 'CountryController@index')->name('api.countryList');
 
 //List Single Country
-Route::get('country/{id}', 'CountryController@show');
+Route::get('country/{id}', 'CountryController@show')->name('api.singleCountry');
+});
