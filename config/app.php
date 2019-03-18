@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'EWHAPI'),
 
     /*
     |--------------------------------------------------------------------------
@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Passport\PassportServiceProvider::class,
+        Ejarnutowski\LaravelApiKey\Providers\ApiKeyServiceProvider::class,
         /*
          * Application Service Providers...
          */
