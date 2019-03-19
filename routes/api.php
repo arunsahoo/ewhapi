@@ -21,7 +21,7 @@ Route::fallback(function(){
 
 //Authorization api
 Route::group([
-    'prefix' => 'auth'
+    'middleware' => 'auth.apikey'
 ], function () {
     Route::post('login', 'AuthController@login')->name('api.login');
     Route::post('signup', 'AuthController@signup')->name('api.signup');
@@ -32,11 +32,7 @@ Route::group([
         Route::get('logout', 'AuthController@logout')->name('api.logout');
         // Route::get('user', 'AuthController@user');
     });
-});
 
-Route::group([
-    'middleware' => 'auth.apikey' //authenticate api request with apikey.
-], function () {
 //List Users
 Route::get('users', 'UserController@index');
 
