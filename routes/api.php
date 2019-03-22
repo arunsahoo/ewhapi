@@ -30,27 +30,13 @@ Route::group([
       'middleware' => 'auth:api'
     ], function() {
         Route::get('logout', 'AuthController@logout')->name('api.logout');
-        // Route::get('user', 'AuthController@user');
     });
-
-//List Users
-Route::get('users', 'UserController@index');
-
-//List Single User
-Route::get('user/{id}', 'UserController@show');
-
-//Create New User
-Route::post('user', 'UserController@store');
-
-//Update User
-Route::put('user', 'UserController@store');
-
-//Delete user
-Route::delete('user/{id}', 'UserController@destroy');
-
-//List Countries
-Route::get('countries', 'CountryController@index')->name('api.countryList');
-
-//List Single Country
-Route::get('country/{id}', 'CountryController@show')->name('api.singleCountry');
+    
+    Route::resource('user_groups', 'UserGroupController');
+    Route::resource('users', 'UserController')->except([
+        'create', 'edit'
+    ]);
+    Route::resource('countries', 'CountryController')->only([
+        'index', 'show'
+    ]);
 });
