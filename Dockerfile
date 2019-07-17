@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
 	librecode-dev \
 	php-mysql
 
-RUN git clone -b $PHP_VERSION https://github.com/php/php-src /php-src/
+RUN git clone -b $PHP_VERSION https://github.com/php/php-src.git /php-src/
 
 WORKDIR /php-src
 
