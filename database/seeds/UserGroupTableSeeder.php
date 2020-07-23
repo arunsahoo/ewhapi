@@ -11,7 +11,7 @@ class UserGroupTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usergroup')->delete();
+        DB::table('user_groups')->delete();
 
 		$group = array(
 			array('group' => 'Super Administrator'),
@@ -20,6 +20,6 @@ class UserGroupTableSeeder extends Seeder
 			array('group' => 'Staff'),
 			array('group' => 'Customer'),
 		);
-		DB::table('usergroup')->insert($group);
+		DB::table('user_groups')->insert($group);
     }
 }

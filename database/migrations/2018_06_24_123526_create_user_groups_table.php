@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserpermissionTable extends Migration
+class CreateUsergroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateUserpermissionTable extends Migration
      */
     public function up()
     {
-        Schema::create('userpermission', function (Blueprint $table) {
+        Schema::create('user_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('PermissionType');
-            $table->timestamps();
+            $table->string('group');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateUserpermissionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userpermission');
+        Schema::dropIfExists('user_groups');
     }
 }
