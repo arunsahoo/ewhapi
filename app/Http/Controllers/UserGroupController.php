@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserGroup;
 
 class UserGroupController extends Controller
 {
@@ -13,7 +14,11 @@ class UserGroupController extends Controller
      */
     public function index()
     {
-        //
+        // Get User Groups
+        $usergroup = UserGroup::paginate();
+
+        // Return collection of usergroups as a resource
+        return $usergroup;
     }
 
     /**
