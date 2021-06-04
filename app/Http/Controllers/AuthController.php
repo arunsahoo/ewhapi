@@ -66,6 +66,11 @@ class AuthController extends Controller
 
         $user = $request->user();
 
+        if(!$user->status)
+            return response()->json([
+                'message' => 'Your accout is not activated.'
+            ], 401);
+
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
 
